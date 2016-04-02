@@ -77,7 +77,8 @@ shinyServer(function(input, output, session) {
           "nagrody" )
    
    load("f.rda")
-   
+   f[,2] <- iconv(as.character(f[,2]), "ISO_8859-2", "UTF-8")
+   f[,2] <- stri_replace_all_fixed(f[,2] "\u009c", "ś")
    M <- reactive({
       
       input$szukaj
